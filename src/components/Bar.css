@@ -54,30 +54,3 @@
 
 	outline: none;
 }
-
-.quantity-button {
-    text-align: center;
-    background: rgba(10, 255, 1, 0.2);
-    margin: 1px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	-khtml-user-select: none; /* Konqueror HTML */
-	-moz-user-select: none; /* Old versions of Firefox */
-	-ms-user-select: none; /* Internet Explorer/Edge */
-}
-
-.quantity-button::hover {
-    opacity: 0.5;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type='number'] {
-    -moz-appearance: textfield;
-}

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 
 // Algorithms
 import BubbleSort from './algorithms/BubbleSort';
+import InsertionSort from './algorithms/InsertionSort';
+import SelectionSort from './algorithms/SelectionSort';
 
 // Icons
 import Play from '@mui/icons-material/PlayArrowRounded';
+import Pause from '@mui/icons-material/PauseRounded';
 import Forward from '@mui/icons-material/SkipNextRounded';
 import Backward from '@mui/icons-material/SkipPreviousRounded';
 import RotateLeft from '@mui/icons-material/ReplayRounded';
 
 import Bar from './components/Bar';
-import Form from './components/Form';
 //CSS
 import './App.css';
 
@@ -21,14 +23,16 @@ class App extends Component {
 		colorKey: [],
 		colorSteps: [],
 		currentStep: 0,
-		count: 20,
+		count: 10,
 		delay: 500,
-		algorithm: 'Bubble Sort',
+		algorithm: 'Selection Sort',
 		timeouts: [],
 	};
 
 	ALGORITHMS = {
 		'Bubble Sort': BubbleSort,
+		'Insertion Sort': InsertionSort,
+		'Selection Sort': SelectionSort,
 	};
 
 	componentDidMount() {
@@ -154,13 +158,6 @@ class App extends Component {
 		});
 	};
 
-	changeSpeed = (e) => {
-		this.clearTimeouts();
-		this.setState({
-			delay: parseInt(e.target.value),
-		})
-	}
-
 	render() {
 		let bars = this.state.array.map((value, index) => (
 			<Bar
@@ -176,10 +173,7 @@ class App extends Component {
 
 		if (this.state.arraySteps.length === this.state.currentStep) {
 			playButton = (
-				<button
-					className='controller'
-					onClick={this.generateRandomArray}
-				>
+				<button className='controller' onClick={this.generateRandomArray}>
 					<RotateLeft />
 				</button>
 			);
@@ -198,10 +192,7 @@ class App extends Component {
 				</div>
 				<div className='control-pannel'>
 					<div className='control-buttons'>
-						<button
-							className='controller'
-							onClick={this.previousStep}
-						>
+						<button className='controller' onClick={this.previousStep}>
 							<Backward />
 						</button>
 						{playButton}
@@ -210,15 +201,7 @@ class App extends Component {
 						</button>
 					</div>
 				</div>
-				<div className='pannel'>
-					<Form
-						formLabel='Speed'
-						values={[500, 400, 300, 200, 100]}
-						currentValue={this.state.delay}
-						lables={['1x', '2x', '3x', '4x', '5x']}
-						onChange={this.changeSpeed}
-					/>
-				</div>
+				<div className='pannel'></div>
 			</div>
 		);
 	}
