@@ -13,7 +13,8 @@ import Backward from '@mui/icons-material/SkipPreviousRounded';
 import RotateLeft from '@mui/icons-material/ReplayRounded';
 
 import Bar from './components/Bar';
-//CSS
+import Form from './components/Form'
+
 import './App.css';
 
 class App extends Component {
@@ -23,10 +24,11 @@ class App extends Component {
 		colorKey: [],
 		colorSteps: [],
 		currentStep: 0,
-		count: 10,
-		delay: 500,
+		count: 12,
+		delay: 150,
 		algorithm: 'Selection Sort',
 		timeouts: [],
+		playing: false,
 	};
 
 	ALGORITHMS = {
@@ -87,6 +89,7 @@ class App extends Component {
 				array: temp,
 				arraySteps: [temp],
 				currentStep: 0,
+				playing: false,
 			},
 			() => {
 				this.generateSteps();
@@ -109,6 +112,13 @@ class App extends Component {
 		);
 	};
 
+	changeSpeed = (e) => {
+		this.clearTimeouts();
+		this.setState({
+			delay: parseInt(e.target.value)
+		})
+	} 
+		
 	previousStep = () => {
 		let currentStep = this.state.currentStep;
 		if (currentStep === 0) return;
@@ -131,7 +141,7 @@ class App extends Component {
 		});
 	};
 
-	start = () => {
+	play = () => {
 		let steps = this.state.arraySteps;
 		let colorSteps = this.state.colorSteps;
 
@@ -139,6 +149,8 @@ class App extends Component {
 
 		let timeouts = [];
 		let i = 0;
+		let player = this.state.playing;
+		this.setState({playing: !player});
 
 		while (i < steps.length - this.state.currentStep) {
 			let timeout = setTimeout(() => {
@@ -157,6 +169,12 @@ class App extends Component {
 			timeouts: timeouts,
 		});
 	};
+
+	pause = () => {
+		this.setState({
+			playing: false,
+		})
+	}
 
 	render() {
 		let bars = this.state.array.map((value, index) => (
@@ -177,9 +195,15 @@ class App extends Component {
 					<RotateLeft />
 				</button>
 			);
+		} else if (this.state.playing) {
+			playButton = (
+				<button className='controller' onClick={this.pause}>
+					<Pause />
+				</button>
+			);
 		} else {
 			playButton = (
-				<button className='controller' onClick={this.start}>
+				<button className='controller' onClick={this.play}>
 					<Play />
 				</button>
 			);
@@ -187,10 +211,11 @@ class App extends Component {
 
 		return (
 			<div className='app'>
+				<h1>Hello world!</h1>
 				<div className='frame'>
 					<div className='barsDiv container card'>{bars}</div>
 				</div>
-				<div className='control-pannel'>
+				<div className='control-panel'>
 					<div className='control-buttons'>
 						<button className='controller' onClick={this.previousStep}>
 							<Backward />
@@ -201,7 +226,15 @@ class App extends Component {
 						</button>
 					</div>
 				</div>
-				<div className='pannel'></div>
+				<div className='panel'>
+					<Form 
+						formLabel='Speed'
+						values={[500, 400, 300, 200, 100]}
+						currentValue={this.state.delay}
+						labels={['1x', '2x', '3x', '4x', '5x']}
+						onChange={this.changeSpeed}
+					/>
+				</div>
 			</div>
 		);
 	}

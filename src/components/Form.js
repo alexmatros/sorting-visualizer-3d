@@ -8,7 +8,7 @@ import {
 	RadioGroup,
 } from '@mui/material';
 
-export default function Form({ formLabel, values, currentValue, lables, onChange }) {
+export default function Form({ formLabel, values, currentValue, labels, onChange }) {
 	return (
 		<div className='container-small card' style={{backgroundColor: '#bebebe', padding: '1em 1em'}}>
 			<FormControl>
@@ -19,7 +19,7 @@ export default function Form({ formLabel, values, currentValue, lables, onChange
 							key={`${value}_${index}`}
 							value={value}
 							control={<Radio />}
-                            label={lables[index]}
+                            label={labels[index]}
 						/>
 					))}
 				</RadioGroup>
