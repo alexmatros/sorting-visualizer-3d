@@ -13,7 +13,8 @@ import Backward from '@mui/icons-material/SkipPreviousRounded';
 import RotateLeft from '@mui/icons-material/ReplayRounded';
 
 import Bar from './components/Bar';
-import Form from './components/Form'
+import SpeedSelection from './components/forms/SpeedSelection'
+import AlgoSelection from './components/forms/AlgoSelection'
 
 import './App.css';
 
@@ -25,8 +26,10 @@ class App extends Component {
 		colorSteps: [],
 		currentStep: 0,
 		count: 12,
-		delay: 150,
-		algorithm: 'Selection Sort',
+		delay: 300,
+		algorithm: 'Bubble Sort',
+		timeComplexity: 'O(n²)',
+		spaceComplexity: 'O(1)',
 		timeouts: [],
 		playing: false,
 	};
@@ -118,6 +121,27 @@ class App extends Component {
 			delay: parseInt(e.target.value)
 		})
 	} 
+
+	changeAlgo = (e) => {
+		this.clearTimeouts();
+		let timeComplexities = {
+			'Bubble Sort':'O(n²)',
+			'Insertion Sort':'O(n²)',
+			'Selection Sort':'O(n²)',
+		};
+
+		let spaceComplexities = {
+			'Bubble Sort':'O(1)',
+			'Insertion Sort':'O(1)',
+			'Selection Sort':'O(1)',
+		};
+
+		this.setState({
+			algorithm: e.target.value,
+			timeComplexity: timeComplexities[e.target.value],
+			spaceComplexity: spaceComplexities[e.target.value]
+		})
+	} 
 		
 	previousStep = () => {
 		let currentStep = this.state.currentStep;
@@ -187,52 +211,63 @@ class App extends Component {
 			/>
 		));
 
-		let playButton;
+		let ctrlpanel;
 
 		if (this.state.arraySteps.length === this.state.currentStep) {
-			playButton = (
-				<button className='controller' onClick={this.generateRandomArray}>
-					<RotateLeft />
-				</button>
+			ctrlpanel = (
+				<div className='control-panel'>
+					<div className='control-buttons'>
+						<button className='controller' onClick={this.generateRandomArray}>
+							<RotateLeft />
+						</button>
+					</div>
+				</div>
 			);
 		} else if (this.state.playing) {
-			playButton = (
-				<button className='controller' onClick={this.pause}>
-					<Pause />
-				</button>
+			ctrlpanel = (
+				<div className='control-panel'><div className='control-buttons'><div className='flashing'>{this.state.algorithm}ing...</div></div></div>
 			);
 		} else {
-			playButton = (
-				<button className='controller' onClick={this.play}>
-					<Play />
-				</button>
-			);
-		}
-
-		return (
-			<div className='app'>
-				<h1>Hello world!</h1>
-				<div className='frame'>
-					<div className='barsDiv container card'>{bars}</div>
-				</div>
+			ctrlpanel = (
 				<div className='control-panel'>
 					<div className='control-buttons'>
 						<button className='controller' onClick={this.previousStep}>
 							<Backward />
 						</button>
-						{playButton}
+						<button className='controller' onClick={this.play}>
+						<Play />
+						</button>
 						<button className='controller' onClick={this.nextStep}>
 							<Forward />
 						</button>
 					</div>
 				</div>
+			);
+		}
+
+		return (
+			<div className='app'>
+				<div className='title'><p>3-D Sorting Alogrithm Visualizer</p></div>
+				<div className='frame'>
+					<div className='complexity'>Time Complexity<br></br>{this.state.timeComplexity}</div>
+					<div className='barsDiv container card'>{bars}</div>
+					<div className='complexity'>Space Complexity<br></br>{this.state.spaceComplexity}</div>
+				</div>
+				{ctrlpanel}
 				<div className='panel'>
-					<Form 
+					<SpeedSelection 
 						formLabel='Speed'
 						values={[500, 400, 300, 200, 100]}
 						currentValue={this.state.delay}
 						labels={['1x', '2x', '3x', '4x', '5x']}
 						onChange={this.changeSpeed}
+					/>
+					<AlgoSelection
+						formLabel='Algorithm'
+						values={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
+						currentValue={this.state.algorithm}
+						labels={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
+						onChange={this.changeAlgo}
 					/>
 				</div>
 			</div>

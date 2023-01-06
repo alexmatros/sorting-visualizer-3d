@@ -2,6 +2,14 @@
 	text-align: center;
 }
 
+.title {
+	font-size: 30pt;
+	text-align: center;
+	font-weight: bold;
+	padding: 2px;
+	background-color: #858AE3;
+}
+
 .frame {
 	margin: 0;
 	display: flex;
@@ -17,10 +25,18 @@
 	height: 220px;
 }
 
+.container-small {
+	margin: 2em 1em;
+	width: 35%;
+	display: flex;
+	justify-content: center;
+	height: 100px;
+}
+
 .card {
 	border-radius: 2em;
-	padding: 0 1em;
-	background-color: #818181;
+	padding: 1em 1em;
+	background-color: #d1d8e2;
 }
 
 .controller {
@@ -44,7 +60,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  border-radius: 20px;
+  	border-radius: 20px;
 }
 
 .control-panel {
@@ -54,4 +70,20 @@
 }
 
 .panel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flashing {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: rgb(32, 194, 14);
+	animation: blinker 2s linear infinite;
+}
+  
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
 }
