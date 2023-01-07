@@ -21,6 +21,7 @@ export default function SpeedSelection({ formLabel, values, currentValue, labels
 							control={<Radio />}
                             label={labels[index]}
                             aria-label="Platform"
+                            labelPlacement="top"
 						/>
 					))}
 				</RadioGroup>

@@ -7,7 +7,6 @@ import SelectionSort from './algorithms/SelectionSort';
 
 // Icons
 import Play from '@mui/icons-material/PlayArrowRounded';
-import Pause from '@mui/icons-material/PauseRounded';
 import Forward from '@mui/icons-material/SkipNextRounded';
 import Backward from '@mui/icons-material/SkipPreviousRounded';
 import RotateLeft from '@mui/icons-material/ReplayRounded';
@@ -247,7 +246,7 @@ class App extends Component {
 
 		return (
 			<div className='app'>
-				<div className='title'><p>3-D Sorting Alogrithm Visualizer</p></div>
+				<div className='title'><p>3-D Sorting Algorithm Visualizer</p></div>
 				<div className='frame'>
 					<div className='complexity'>Time Complexity<br></br>{this.state.timeComplexity}</div>
 					<div className='barsDiv container card'>{bars}</div>
