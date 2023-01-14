@@ -4,14 +4,22 @@
 
 .header {
 	margin: 0;
-	background-color: #1e71e7;
+	background-color: #aeb1eb;
+	box-shadow: 5px 5px 5px rgb(105, 105, 105);
 }
 
 .title {
 	font-size: 30pt;
 	text-align: center;
 	font-weight: bold;
-	background-color: #858AE3;
+}
+
+.instructions {
+	text-align: center;
+}
+
+.horiz {
+	width: 80%;
 }
 
 .frame {
@@ -34,6 +42,7 @@
 	width: 35%;
 	display: flex;
 	justify-content: center;
+	padding: 0;
 }
 
 .card {
@@ -73,10 +82,11 @@
 
 .complexity {
 	display: flex;
-	background-color: #858AE3;
+	background-color: #9093de;
 	text-align: center;
 	margin: 1.5em;
 	padding: 0.5em;
+	border-radius: 5px;
 }
 
 .panel {

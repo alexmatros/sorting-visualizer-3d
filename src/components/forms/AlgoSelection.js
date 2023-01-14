@@ -9,10 +9,10 @@ import {
 
 export default function AlgoSelection({ formLabel, values, currentValue, labels, onChange }) {
 	return (
-		<div className='container-small' style={{backgroundColor: '#bebebe', justifyContent: 'center'}}>
+		<div className='container-small' style={{padding: "20px 1em 20px 1em", justifyContent: 'center'}}>
 			<FormControl>
 				<FormLabel>{formLabel}</FormLabel>
-				<ToggleButtonGroup 
+				<ToggleButtonGroup
                     value={currentValue} 
                     onChange={onChange}
                     exclusive

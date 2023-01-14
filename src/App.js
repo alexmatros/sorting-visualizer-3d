@@ -248,6 +248,8 @@ class App extends Component {
 			<div className='app'>
 				<div className='header'>
 					<div className='title'>3-D Sorting Algorithm Visualizer</div>
+					<p className='instructions'>Select a sorting speed and algorithm. Press the play button below to visualize the sorting process!</p>
+					<hr className="horiz"></hr>
 					<div className='panel'>
 						<SpeedSelection 
 							formLabel='Speed'
