@@ -2,11 +2,15 @@
 	text-align: center;
 }
 
+.header {
+	margin: 0;
+	background-color: #1e71e7;
+}
+
 .title {
 	font-size: 30pt;
 	text-align: center;
 	font-weight: bold;
-	padding: 2px;
 	background-color: #858AE3;
 }
 
@@ -27,21 +31,18 @@
 }
 
 .container-small {
-	margin: 2em 1em;
 	width: 35%;
 	display: flex;
 	justify-content: center;
-	height: 100px;
 }
 
 .card {
 	border-radius: 2em;
 	padding: 1em 1em;
-	background-color: #d1d8e2;
+	background-color: #eeeeee;
 }
 
 .controller {
-	background: #555;
 	margin: 0 1em;
 	border: 1px solid;
 	height: 3em;

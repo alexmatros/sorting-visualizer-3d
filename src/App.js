@@ -246,29 +246,31 @@ class App extends Component {
 
 		return (
 			<div className='app'>
-				<div className='title'><p>3-D Sorting Algorithm Visualizer</p></div>
+				<div className='header'>
+					<div className='title'>3-D Sorting Algorithm Visualizer</div>
+					<div className='panel'>
+						<SpeedSelection 
+							formLabel='Speed'
+							values={[500, 400, 300, 200, 100]}
+							currentValue={this.state.delay}
+							labels={['1x', '2x', '3x', '4x', '5x']}
+							onChange={this.changeSpeed}
+						/>
+						<AlgoSelection
+							formLabel='Algorithm'
+							values={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
+							currentValue={this.state.algorithm}
+							labels={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
+							onChange={this.changeAlgo}
+						/>
+					</div>
+				</div>
 				<div className='frame'>
 					<div className='complexity'>Time Complexity<br></br>{this.state.timeComplexity}</div>
 					<div className='barsDiv container card'>{bars}</div>
 					<div className='complexity'>Space Complexity<br></br>{this.state.spaceComplexity}</div>
 				</div>
 				{ctrlpanel}
-				<div className='panel'>
-					<SpeedSelection 
-						formLabel='Speed'
-						values={[500, 400, 300, 200, 100]}
-						currentValue={this.state.delay}
-						labels={['1x', '2x', '3x', '4x', '5x']}
-						onChange={this.changeSpeed}
-					/>
-					<AlgoSelection
-						formLabel='Algorithm'
-						values={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
-						currentValue={this.state.algorithm}
-						labels={['Bubble Sort', 'Insertion Sort', 'Selection Sort']}
-						onChange={this.changeAlgo}
-					/>
-				</div>
 			</div>
 		);
 	}

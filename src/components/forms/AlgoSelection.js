@@ -9,7 +9,7 @@ import {
 
 export default function AlgoSelection({ formLabel, values, currentValue, labels, onChange }) {
 	return (
-		<div className='container-small card' style={{backgroundColor: '#bebebe', padding: '1em 1em', justifyContent: 'center'}}>
+		<div className='container-small' style={{backgroundColor: '#bebebe', justifyContent: 'center'}}>
 			<FormControl>
 				<FormLabel>{formLabel}</FormLabel>
 				<ToggleButtonGroup 
@@ -17,6 +17,7 @@ export default function AlgoSelection({ formLabel, values, currentValue, labels,
                     onChange={onChange}
                     exclusive
                     aria-label="Algorithm"
+					size="small"
                 >
                     <ToggleButton value="Bubble Sort">Bubble Sort</ToggleButton>
                     <ToggleButton value="Insertion Sort">Insertion Sort</ToggleButton>

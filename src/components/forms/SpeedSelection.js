@@ -10,7 +10,7 @@ import {
 
 export default function SpeedSelection({ formLabel, values, currentValue, labels, onChange }) {
 	return (
-		<div className='container-small card' style={{backgroundColor: '#bebebe', padding: '1em 1em'}}>
+		<div className='container-small' style={{backgroundColor: '#bebebe', padding: '1em 1em'}}>
 			<FormControl>
 				<FormLabel>{formLabel}</FormLabel>
 				<RadioGroup row value={currentValue} onChange={onChange}>
@@ -22,6 +22,7 @@ export default function SpeedSelection({ formLabel, values, currentValue, labels
                             label={labels[index]}
                             aria-label="Platform"
                             labelPlacement="top"
+							size="small"
 						/>
 					))}
 				</RadioGroup>
